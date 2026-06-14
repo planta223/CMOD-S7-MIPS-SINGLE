@@ -66,12 +66,12 @@ set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
   set_param chipscope.maxJobs 2
-  open_checkpoint top_uart_mips_routed.dcp
+  open_checkpoint top_uart_hello_routed.dcp
   set_property webtalk.parent_dir E:/Workspace/Vivado/mips_single/mips_single.cache/wt [current_project]
-  catch { write_mem_info -force top_uart_mips.mmi }
-  write_bitstream -force top_uart_mips.bit 
-  catch {write_debug_probes -quiet -force top_uart_mips}
-  catch {file copy -force top_uart_mips.ltx debug_nets.ltx}
+  catch { write_mem_info -force top_uart_hello.mmi }
+  write_bitstream -force top_uart_hello.bit 
+  catch {write_debug_probes -quiet -force top_uart_hello}
+  catch {file copy -force top_uart_hello.ltx debug_nets.ltx}
   close_msg_db -file write_bitstream.pb
 } RESULT]
 if {$rc} {
