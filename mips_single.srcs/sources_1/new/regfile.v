@@ -11,6 +11,13 @@ module regfile (
 );
 
     reg [31:0] rf [31:0];
+    integer i;
+
+    initial begin
+        for (i = 0; i < 32; i = i + 1) begin
+            rf[i] = 32'h00000000;
+        end
+    end
 
     always @(posedge clk) begin
         if (we3 && (a3 != 5'd0)) begin

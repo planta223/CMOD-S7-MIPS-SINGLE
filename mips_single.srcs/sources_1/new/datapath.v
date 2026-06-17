@@ -124,12 +124,12 @@ module datapath (
         .rd2(rd2)
     );
 
+    assign srca      = rd1;
     assign writedata = rd2;
 
     // -------------------------
     // ALU
     // -------------------------
-    assign srca = rd1;
     assign srcb = alusrc ? extimm : rd2;
 
     alu alu_inst (
