@@ -17,6 +17,7 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
+set_param chipscope.maxJobs 2
 create_project -in_memory -part xc7s25csga225-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -40,6 +41,7 @@ read_verilog -library xil_defaultlib {
   E:/Workspace/Vivado/mips_single/mips_single.srcs/sources_1/new/main_decoder.v
   E:/Workspace/Vivado/mips_single/mips_single.srcs/sources_1/new/regfile.v
   E:/Workspace/Vivado/mips_single/mips_single.srcs/sources_1/new/top_mips.v
+  E:/Workspace/Vivado/mips_single/mips_single.srcs/sources_1/new/top_mips_timing.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -55,12 +57,12 @@ set_property used_in_implementation false [get_files E:/Workspace/Vivado/mips_si
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
-synth_design -top top_mips -part xc7s25csga225-1
+synth_design -top top_mips_timing -part xc7s25csga225-1
 
 
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef top_mips.dcp
-create_report "synth_1_synth_report_utilization_0" "report_utilization -file top_mips_utilization_synth.rpt -pb top_mips_utilization_synth.pb"
+write_checkpoint -force -noxdef top_mips_timing.dcp
+create_report "synth_1_synth_report_utilization_0" "report_utilization -file top_mips_timing_utilization_synth.rpt -pb top_mips_timing_utilization_synth.pb"
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]

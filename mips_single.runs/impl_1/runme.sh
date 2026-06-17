@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='E:/Workspace/Vivado/mips_single/mips_single.runs/synth_1'
+HD_PWD='E:/Workspace/Vivado/mips_single/mips_single.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -40,4 +40,8 @@ EAStep()
      fi
 }
 
-EAStep vivado -log top_mips_timing.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_mips_timing.tcl
+# pre-commands:
+/bin/touch .init_design.begin.rst
+EAStep vivado -log top_mips_timing.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source top_mips_timing.tcl -notrace
+
+
