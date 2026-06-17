@@ -1,11 +1,11 @@
 module controller (
     input  wire [5:0] op,
     input  wire [5:0] funct,
-    input  wire       zero,
 
     output wire       memtoreg,
     output wire       memwrite,
-    output wire       pcsrc,
+    output wire       branch,
+    output wire       branchneq,
     output wire       alusrc,
     output wire       regdst,
     output wire       regwrite,
@@ -15,8 +15,6 @@ module controller (
 );
 
     wire [1:0] aluop;
-    wire branch;
-    wire branchneq;
 
     main_decoder md (
         .op(op),
@@ -37,7 +35,5 @@ module controller (
         .funct(funct),
         .alucontrol(alucontrol)
     );
-
-    assign pcsrc = (branch & zero) | (branchneq & ~zero);
 
 endmodule
