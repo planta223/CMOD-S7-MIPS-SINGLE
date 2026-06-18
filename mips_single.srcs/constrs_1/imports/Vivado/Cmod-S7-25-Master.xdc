@@ -5,7 +5,7 @@
 
 ## 12 MHz System Clock
 set_property -dict { PACKAGE_PIN M9    IOSTANDARD LVCMOS33 } [get_ports { clk }]; #IO_L13P_T2_MRCC_14 Sch=gclk
-create_clock -name sys_clk_pin -period 2.518 [get_ports { clk }];
+create_clock -name clk -period 83.330 [get_ports { clk }];
 
 ## Push Buttons
 set_property -dict { PACKAGE_PIN D2    IOSTANDARD LVCMOS33 } [get_ports { reset }]; #IO_L6P_T0_34 Sch=btn[0]
