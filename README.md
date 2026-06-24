@@ -1,5 +1,7 @@
 # CMOD-S7-MIPS-SINGLE
 
+> **Status:** Completed on 2026-06-18
+
 Digilent Cmod S7-25 보드를 대상으로 단일 사이클 32-bit MIPS Processor를 Verilog RTL로 구현하고, Vivado 기반 기능 검증 및 FPGA timing analysis를 수행한 프로젝트입니다.
 
 ## 개발 환경
